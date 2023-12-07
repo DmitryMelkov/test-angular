@@ -32,6 +32,9 @@ export class AppComponent implements OnInit {
   loading = false;
   products$: Observable<IProduct[]>;
 
+  //фильтрация
+  term = '';
+
   constructor(private productService: ProductServices) {}
 
   ngOnInit(): void {

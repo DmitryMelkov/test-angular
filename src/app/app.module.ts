@@ -7,19 +7,23 @@ import { ProductComponent } from './components/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
 
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { ModalComponent } from './components/modal/modal.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    GlobalErrorComponent
+    GlobalErrorComponent,
+    FilterProductsPipe,
+    ModalComponent,
+    CreateProductComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   //останговился на 1:15:00
