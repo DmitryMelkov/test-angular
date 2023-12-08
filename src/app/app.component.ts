@@ -3,6 +3,7 @@ import { IProduct } from './models/product';
 import { products as data } from './data/products';
 import { ProductServices } from './services/products.service';
 import { Observable, tap } from 'rxjs';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -30,17 +31,24 @@ export class AppComponent implements OnInit {
 
   //апи вариант 2
   loading = false;
-  products$: Observable<IProduct[]>;
+  // products$: Observable<IProduct[]>;
 
   //фильтрация
   term = '';
 
-  constructor(private productService: ProductServices) {}
+  constructor(
+    public productService: ProductServices,
+    public modalService: ModalService
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
-    this.products$ = this.productService
-      .getAll()
-      .pipe(tap(() => (this.loading = false)));
+    // this.products$ = this.productService
+    //   .getAll()
+    //   .pipe(tap(() => (this.loading = false)));
+
+    this.productService.getAll().subscribe(() => {
+      this.loading = false;
+    });
   }
 }
